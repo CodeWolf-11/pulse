@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 import ThemeToggler from "../theme/ThemeToggler";
 import { CustomUser } from "@/app/api/auth/[...nextauth]/options";
-import LoginModal from "../auth/loginModal";
+import LoginModal from "../auth/LoginModal";
 
 
 export default function Navbar({ user }: { user?: CustomUser }) {
