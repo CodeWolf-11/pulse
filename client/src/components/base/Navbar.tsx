@@ -4,9 +4,11 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import ThemeToggler from "../theme/ThemeToggler";
+import { CustomUser } from "@/app/api/auth/[...nextauth]/options";
+import LoginModal from "../auth/loginModal";
 
 
-export default function Navbar() {
+export default function Navbar({ user }: { user?: CustomUser }) {
     return (
         <nav className="p-6 flex justify-between items-center bg-white shadow-sm dark:bg-slate-950 dark:text-white">
 
@@ -21,12 +23,19 @@ export default function Navbar() {
 
 
             <div className="flex items-center space-x-2 md:space-x-6 text-gray-700">
-                {/* <Link href="/">Home</Link>
-                <Link href="#features">Features</Link> */}
+
                 <ThemeToggler />
-                <Link href="/dashboard">
-                    <Button>Dashboard</Button>
-                </Link>
+
+                {
+                    !user ? (
+                        <LoginModal />
+                    ) : (
+                        <Link href="/dashboard">
+                            <Button>Dashboard</Button>
+                        </Link>
+                    )
+                }
+
 
             </div>
         </nav>
