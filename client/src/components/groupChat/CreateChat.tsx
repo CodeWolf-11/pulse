@@ -50,8 +50,19 @@ function CreateChat() {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='mt-4'>
                         <Input {...register("title")} placeholder='Enter the title' />
-                        <Input {...register("passcode")} placeholder='Enter the title' />
+                        <span className='text-red-600'>{errors?.title?.message}</span>
                     </div>
+
+                    <div className="mt-4">
+                        <Input {...register("passcode")} placeholder='' />
+                        <span className='text-red-600'>{errors?.passcode?.message}</span>
+                    </div>
+
+                    <div className='mt-4'>
+                        <Button className='w-full' disabled={isLoading}>{isLoading ? "Processing..." : "Submit"}</Button>
+                    </div>
+
+
                 </form>
 
             </DialogContent>
