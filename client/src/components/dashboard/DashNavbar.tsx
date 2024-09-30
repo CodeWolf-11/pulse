@@ -2,11 +2,9 @@ import React from 'react'
 import Image from 'next/image'
 import ThemeToggler from '../theme/ThemeToggler'
 import ProfileMenu from './ProfileMenu'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/app/api/auth/[...nextauth]/options'
 
-async function DashNavbar() {
-    const session = await getServerSession(authOptions);
+async function DashNavbar({ name, image }: { name: string, image?: string }) {
+
 
     return (
         <nav className="p-6 flex justify-between items-center bg-white shadow-sm dark:bg-slate-950 dark:text-white">
@@ -25,7 +23,7 @@ async function DashNavbar() {
 
                 <ThemeToggler />
 
-                <ProfileMenu name={session?.user?.name!} image={session?.user?.image!} />
+                <ProfileMenu name={name} image={image} />
 
 
             </div>

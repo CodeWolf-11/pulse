@@ -1,13 +1,18 @@
 import DashNavbar from '@/components/dashboard/DashNavbar'
 import CreateChat from '@/components/groupChat/CreateChat'
 import React from 'react'
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../api/auth/[...nextauth]/options';
 
-function page() {
+
+async function page() {
+    const session = await getServerSession(authOptions);
+
     return (
-        <div>
-            <DashNavbar />
-            <div className='flex justify-end mt-10'>
-                <CreateChat />
+        <div className='container h-screen mx-auto'>
+            <DashNavbar name={session?.user?.name!} image={session?.user?.image!} />
+            <div className='flex justify-end mt-4 p-6'>
+                <CreateChat user={session?.user!} />
             </div>
         </div>
 
