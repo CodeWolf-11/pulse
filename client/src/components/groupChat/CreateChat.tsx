@@ -19,10 +19,13 @@ import { CustomUser } from '@/app/api/auth/[...nextauth]/options';
 import axios, { AxiosError } from 'axios';
 import { toast } from 'sonner';
 import { CHAT_GROUP_URL } from '@/lib/apiEndpoints';
+import { revalidateTag } from 'next/cache';
+import { revalidate } from '@/lib/revalidateUtil';
 
 function CreateChat({ user }: { user: CustomUser }) {
 
     const [open, setOpen] = useState<boolean>(false);
+
     const { register,
         handleSubmit,
         formState: { errors, isLoading }
@@ -45,7 +48,8 @@ function CreateChat({ user }: { user: CustomUser }) {
 
             if (data?.message) {
                 setOpen(false);
-                toast.success(data.message);
+                toast.success(data?.message);
+                revalidate("dashboard");
             }
 
         } catch (error) {
@@ -53,6 +57,7 @@ function CreateChat({ user }: { user: CustomUser }) {
                 toast.error(error.response?.data.message);
             } else {
                 toast.error("Something went wrong");
+                console.log(error);
             }
         }
     }

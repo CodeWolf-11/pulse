@@ -2,17 +2,29 @@ import DashNavbar from '@/components/dashboard/DashNavbar'
 import CreateChat from '@/components/groupChat/CreateChat'
 import React from 'react'
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../api/auth/[...nextauth]/options';
+import { authOptions, CustomSession } from '../api/auth/[...nextauth]/options';
+import { fetchChatGroups } from '@/fetchData/chatGroupFetch';
+import { map } from 'zod';
+import GroupChatCard from '@/components/groupChat/GroupChatCard';
 
 
 async function page() {
-    const session = await getServerSession(authOptions);
-
+    const session: CustomSession | null = await getServerSession(authOptions);
+    const groups: Array<ChatGroupType> = await fetchChatGroups(session?.user?.token!)
     return (
         <div className='container h-screen mx-auto'>
             <DashNavbar name={session?.user?.name!} image={session?.user?.image!} />
             <div className='flex justify-end mt-4 p-6'>
                 <CreateChat user={session?.user!} />
+            </div>
+
+            {/* //make it a grid */}
+            <div className='mt-2 grid p-6 gap-2'>
+                {
+                    groups.map((chatgroup: ChatGroupType) => {
+                        return <GroupChatCard chatgroup={chatgroup} />
+                    })
+                }
             </div>
         </div>
 
