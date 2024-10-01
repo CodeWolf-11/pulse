@@ -14,7 +14,6 @@ import {
 import { CHAT_GROUP_URL } from "@/lib/apiEndpoints"
 import { revalidate } from "@/lib/revalidateUtil"
 import axios, { AxiosError } from "axios"
-import { getServerSession } from "next-auth"
 import { useSession } from "next-auth/react"
 import React, { Dispatch, SetStateAction } from 'react'
 import { toast } from "sonner"

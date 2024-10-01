@@ -21,7 +21,7 @@ async function page() {
             <div className='mt-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 p-6 gap-10'>
                 {
                     groups.map((chatgroup: ChatGroupType) => {
-                        return <GroupChatCard key={chatgroup.id} chatgroup={chatgroup} />
+                        return <GroupChatCard key={chatgroup.id} chatgroup={chatgroup} user={session?.user!} />
                     })
                 }
             </div>
