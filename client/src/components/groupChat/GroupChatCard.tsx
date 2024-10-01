@@ -4,25 +4,26 @@ import React from 'react'
 import {
     Card,
     CardContent,
-    CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
+import GroupChatMenu from './GroupChatMenu';
+import Link from 'next/link';
+import { Button } from '../ui/button';
 
 function GroupChatCard({ chatgroup }: { chatgroup: ChatGroupType }) {
     return (
-        <Card>
-            <CardHeader>
+        <Card className='dark:bg-slate-900 bg-white shadow-lg'>
+            <CardHeader className='flex flex-row justify-between'>
                 <CardTitle>{chatgroup.title}</CardTitle>
-
+                <GroupChatMenu />
             </CardHeader>
             <CardContent>
-                <p>Card Content</p>
+                <Link href={"/"}>
+                    <Button >Go to Room</Button>
+                </Link>
+
             </CardContent>
-            <CardFooter>
-                <p>Card Footer</p>
-            </CardFooter>
         </Card>
 
     )
