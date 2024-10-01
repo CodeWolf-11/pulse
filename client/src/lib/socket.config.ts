@@ -1,7 +1,7 @@
 import { io, Socket } from "socket.io-client";
 import ENV from "./env";
 
-let socket: Socket
+let socket: Socket //this will be the single source of truth
 
 export const getSocket = () => {
 

@@ -17,17 +17,17 @@ import { signOut } from 'next-auth/react'
 
 function LogoutModal({ open, setOpen }: { open: boolean, setOpen: Dispatch<SetStateAction<boolean>> }) {
     return (
-        <AlertDialog open={open} onOpenChange={setOpen}>
-            <AlertDialogContent>
+        <AlertDialog open={open} onOpenChange={setOpen} >
+            <AlertDialogContent className='dark:bg-slate-900 bg-white shadow-md text-black'>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                    <AlertDialogTitle className='text-black dark:text-white'>Are you absolutely sure?</AlertDialogTitle>
                     <AlertDialogDescription>
                         This action cannot be undone. This will delete your current
                         session and you will have to login again
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogCancel className='dark:text-white'>Cancel</AlertDialogCancel>
                     <AlertDialogAction onClick={() => signOut({
                         redirect: true,
                         callbackUrl: "/"
