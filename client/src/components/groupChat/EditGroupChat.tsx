@@ -7,7 +7,6 @@ import {
     DialogDescription,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
 } from "@/components/ui/dialog"
 import { useForm } from 'react-hook-form'
 import { Input } from '../ui/input';
@@ -18,7 +17,6 @@ import { CustomUser } from '@/app/api/auth/[...nextauth]/options';
 import axios, { AxiosError } from 'axios';
 import { toast } from 'sonner';
 import { CHAT_GROUP_URL } from '@/lib/apiEndpoints';
-import { title } from 'process';
 import { revalidate } from '@/lib/revalidateUtil';
 
 
