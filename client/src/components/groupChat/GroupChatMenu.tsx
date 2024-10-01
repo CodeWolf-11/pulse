@@ -13,11 +13,11 @@ import { Copy, EllipsisVertical, FilePenLine, Trash2 } from "lucide-react"
 import { useState } from "react"
 import DeleteModal from "./DeleteModal"
 
-function GroupChatMenu() {
+function GroupChatMenu({ id }: { id: string }) {
     const [open, setOpen] = useState<boolean>(false);
     return (
         <>
-            <DeleteModal open={open} setOpen={setOpen} />
+            <DeleteModal id={id} open={open} setOpen={setOpen} />
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
 

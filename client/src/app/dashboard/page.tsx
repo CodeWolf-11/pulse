@@ -4,7 +4,6 @@ import React from 'react'
 import { getServerSession } from 'next-auth';
 import { authOptions, CustomSession } from '../api/auth/[...nextauth]/options';
 import { fetchChatGroups } from '@/fetchData/chatGroupFetch';
-import { map } from 'zod';
 import GroupChatCard from '@/components/groupChat/GroupChatCard';
 
 
@@ -22,7 +21,7 @@ async function page() {
             <div className='mt-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 p-6 gap-10'>
                 {
                     groups.map((chatgroup: ChatGroupType) => {
-                        return <GroupChatCard chatgroup={chatgroup} />
+                        return <GroupChatCard key={chatgroup.id} chatgroup={chatgroup} />
                     })
                 }
             </div>

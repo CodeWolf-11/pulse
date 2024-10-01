@@ -16,7 +16,7 @@ function GroupChatCard({ chatgroup }: { chatgroup: ChatGroupType }) {
         <Card className='dark:bg-slate-900 bg-white shadow-lg'>
             <CardHeader className='flex flex-row justify-between'>
                 <CardTitle>{chatgroup.title}</CardTitle>
-                <GroupChatMenu />
+                <GroupChatMenu id={chatgroup.id} />
             </CardHeader>
             <CardContent>
                 <Link href={"/"}>
