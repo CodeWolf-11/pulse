@@ -12,21 +12,19 @@ function ChatBase() {
 
     useEffect(() => {
 
-        socket.on("message", (data: any) => {
-            console.log("The socket message is ", data);
-        })
+        socket.on("message", (data) => {
+            console.log("message is ", data)
+        });
 
         return () => {
             socket.disconnect();
         }
     }, []);
 
-
     const handleClick = () => {
-
         socket.emit("message", {
-
-        })
+            //PAYLOAD TO EMIT
+        });
     }
 
 
