@@ -2,6 +2,9 @@
 
 import { getSocket } from '@/lib/socket.config'
 import React, { useEffect, useMemo } from 'react'
+import { v4 as uuid4 } from "uuid";
+import { Button } from '../ui/button';
+
 
 function ChatBase() {
 
@@ -17,19 +20,22 @@ function ChatBase() {
         });
 
         return () => {
-            socket.disconnect();
+            socket.close()
         }
     }, []);
 
     const handleClick = () => {
         socket.emit("message", {
-            //PAYLOAD TO EMIT
+            name: "Nishant",
+            id: uuid4()
         });
     }
 
 
     return (
-        <div>ChatBase</div>
+        <div>
+            <Button onClick={handleClick}>Send</Button>
+        </div>
     )
 }
 

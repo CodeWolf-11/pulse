@@ -14,6 +14,8 @@ import { useState } from "react"
 import DeleteModal from "./DeleteModal"
 import EditGroupChat from "./EditGroupChat"
 import { CustomUser } from "@/app/api/auth/[...nextauth]/options"
+import ENV from "@/lib/env"
+import { toast } from "sonner"
 
 function GroupChatMenu({ user, chatgroup }: { user: CustomUser, chatgroup: ChatGroupType }) {
     const [open, setOpen] = useState<boolean>(false);
@@ -34,7 +36,10 @@ function GroupChatMenu({ user, chatgroup }: { user: CustomUser, chatgroup: ChatG
 
                     </DropdownMenuItem>
 
-                    <DropdownMenuItem className="flex justify-between">
+                    <DropdownMenuItem className="flex justify-between" onClick={() => {
+                        window.navigator.clipboard.writeText(`${ENV.APP_URL}/chats/${chatgroup.id}`);
+                        toast.success("Link copied");
+                    }}>
                         <span className="mr-2">Copy</span> <Copy />
                     </DropdownMenuItem>
 

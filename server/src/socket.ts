@@ -7,6 +7,11 @@ export const socketConfig = (io: Server) => {
 
         io.on("disconnect", (socket) => {
             console.log("A user disconnected", socket.id)
-        })
-    })
+        });
+
+        socket.on("message", (data) => {
+            console.log(data);
+            socket.broadcast.emit("message", data);
+        });
+    });
 }
