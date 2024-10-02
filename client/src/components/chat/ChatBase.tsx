@@ -6,10 +6,15 @@ import { v4 as uuid4 } from "uuid";
 import { Button } from '../ui/button';
 
 
-function ChatBase() {
+function ChatBase({ groudId }: { groudId: string }) {
 
     let socket = useMemo(() => {
         const socket = getSocket();
+
+        //make sure that below should be done before connection
+        socket.auth = {
+            room: groudId
+        }
         return socket.connect();
     }, []);
 
