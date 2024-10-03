@@ -71,7 +71,7 @@ function ChatBase({ group, users }: { group: ChatGroupType, users: Array<GroupCh
                 <div className='w-full h-full flex'>
                     <ChatSideBarPhone users={users} isSideBarOpen={isSideBarOpen} />
                     <ChatSideBar users={users} />
-                    <ChatArea isSideBarOpen={isSideBarOpen} setIsSideBarOpen={setIsSideBarOpen} />
+                    <ChatArea user={chatUser} isSideBarOpen={isSideBarOpen} setIsSideBarOpen={setIsSideBarOpen} />
                 </div>
 
 
