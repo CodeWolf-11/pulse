@@ -1,12 +1,15 @@
 "use client"
 
 import { getSocket } from '@/lib/socket.config'
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { v4 as uuid4 } from "uuid";
-import { Button } from '../ui/button';
+import ChatSideBar from './ChatSideBar';
+import ChatArea from './ChatArea';
 
 
 function ChatBase({ groudId }: { groudId: string }) {
+
+    const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(false);
 
     let socket = useMemo(() => {
         const socket = getSocket();
@@ -38,8 +41,12 @@ function ChatBase({ groudId }: { groudId: string }) {
 
 
     return (
-        <div>
-            <Button onClick={handleClick}>Send</Button>
+        <div className='container h-screen mx-auto my-auto bg-red-700'>
+            <div className='w-full h-full bg-green-500 flex'>
+                <ChatSideBar isSideBarOpen={isSideBarOpen} />
+                <ChatArea isSideBarOpen={isSideBarOpen} setIsSideBarOpen={setIsSideBarOpen} />
+            </div>
+
         </div>
     )
 }

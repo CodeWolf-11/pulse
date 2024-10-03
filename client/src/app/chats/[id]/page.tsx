@@ -1,12 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ChatBase from '@/components/chat/ChatBase'
+import { fetchChatGroup } from '@/fetchData/chatGroupsFetch'
+import { notFound } from 'next/navigation';
 
-function page({ params: { id } }: { params: { id: string } }) {
+async function page({ params: { id } }: { params: { id: string } }) {
+
+    if (id.length !== 36) {
+        return notFound();
+    }
+    const group: ChatGroupType | null = await fetchChatGroup(id);
+
+    if (group === null) {
+        return notFound();
+    }
+
     return (
-        <>
-            <div>{id}</div>
-            <ChatBase groudId={id} />
-        </>
+        <ChatBase groudId={id} />
+
 
     )
 }

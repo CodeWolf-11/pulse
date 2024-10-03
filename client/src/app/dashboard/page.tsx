@@ -3,7 +3,7 @@ import CreateChat from '@/components/groupChat/CreateChat'
 import React from 'react'
 import { getServerSession } from 'next-auth';
 import { authOptions, CustomSession } from '../api/auth/[...nextauth]/options';
-import { fetchChatGroups } from '@/fetchData/chatGroupFetch';
+import { fetchChatGroups } from '@/fetchData/chatGroupsFetch';
 import GroupChatCard from '@/components/groupChat/GroupChatCard';
 
 
