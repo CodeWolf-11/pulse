@@ -8,7 +8,7 @@ import ChatArea from './ChatArea';
 import ChatSideBar from './ChatSideBar';
 
 
-function ChatBase({ groudId }: { groudId: string }) {
+function ChatBase({ group, users }: { group: ChatGroupType, users: Array<GroupChatUserType> }) {
 
     const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(false);
 
@@ -17,7 +17,7 @@ function ChatBase({ groudId }: { groudId: string }) {
 
         //make sure that below should be done before connection
         socket.auth = {
-            room: groudId
+            room: group.id
         }
         return socket.connect();
     }, []);
@@ -41,13 +41,15 @@ function ChatBase({ groudId }: { groudId: string }) {
     }
 
 
+
     return (
         <div className='container h-screen mx-auto my-auto'>
             <div className='w-full h-full flex'>
-                <ChatSideBarPhone isSideBarOpen={isSideBarOpen} />
-                <ChatSideBar />
+                <ChatSideBarPhone users={users} isSideBarOpen={isSideBarOpen} />
+                <ChatSideBar users={users} />
                 <ChatArea isSideBarOpen={isSideBarOpen} setIsSideBarOpen={setIsSideBarOpen} />
             </div>
+
 
         </div>
     )

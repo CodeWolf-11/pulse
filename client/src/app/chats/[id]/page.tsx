@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import ChatBase from '@/components/chat/ChatBase'
 import { fetchChatGroup } from '@/fetchData/chatGroupsFetch'
 import { notFound } from 'next/navigation';
+import { fetchChatGroupUser } from '@/fetchData/chatGroupUser';
 
 async function page({ params: { id } }: { params: { id: string } }) {
 
@@ -14,9 +15,10 @@ async function page({ params: { id } }: { params: { id: string } }) {
         return notFound();
     }
 
-    return (
-        <ChatBase groudId={id} />
+    const users: Array<GroupChatUserType> = await fetchChatGroupUser(id);
 
+    return (
+        <ChatBase group={group} users={users} />
 
     )
 }
