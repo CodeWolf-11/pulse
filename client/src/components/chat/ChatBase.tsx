@@ -3,8 +3,9 @@
 import { getSocket } from '@/lib/socket.config'
 import React, { useEffect, useMemo, useState } from 'react'
 import { v4 as uuid4 } from "uuid";
-import ChatSideBar from './ChatSideBar';
+import ChatSideBarPhone from './ChatSideBarMobile';
 import ChatArea from './ChatArea';
+import ChatSideBar from './ChatSideBar';
 
 
 function ChatBase({ groudId }: { groudId: string }) {
@@ -41,9 +42,10 @@ function ChatBase({ groudId }: { groudId: string }) {
 
 
     return (
-        <div className='container h-screen mx-auto my-auto bg-red-700'>
-            <div className='w-full h-full bg-green-500 flex'>
-                <ChatSideBar isSideBarOpen={isSideBarOpen} />
+        <div className='container h-screen mx-auto my-auto'>
+            <div className='w-full h-full flex'>
+                <ChatSideBarPhone isSideBarOpen={isSideBarOpen} />
+                <ChatSideBar />
                 <ChatArea isSideBarOpen={isSideBarOpen} setIsSideBarOpen={setIsSideBarOpen} />
             </div>
 
