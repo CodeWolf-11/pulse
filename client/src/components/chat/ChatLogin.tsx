@@ -11,10 +11,10 @@ import {
 import { Input } from '../ui/input'
 import { useForm } from 'react-hook-form'
 import { Button } from '../ui/button'
-import { useParams } from 'next/navigation'
 import axios, { AxiosError } from 'axios'
 import { CHAT_GROUP_USER } from '@/lib/apiEndpoints'
 import { toast } from 'sonner'
+import { revalidate } from '@/lib/revalidateUtil'
 
 
 function ChatLogin({ open, setOpen, group, user, setUser }: { open: boolean, setOpen: Dispatch<SetStateAction<boolean>>, group: ChatGroupType, user: GroupChatUserType | undefined, setUser: Dispatch<SetStateAction<GroupChatUserType | undefined>> }) {
@@ -64,6 +64,8 @@ function ChatLogin({ open, setOpen, group, user, setUser }: { open: boolean, set
             toast.success("User created!");
 
             setOpen(false);
+
+            revalidate("user");
 
         } catch (error) {
 

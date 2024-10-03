@@ -3,7 +3,9 @@ import { CHAT_GROUP_USER } from "@/lib/apiEndpoints";
 
 export async function fetchChatGroupUser(id: string) {
     const res = await fetch(CHAT_GROUP_USER + `?group_id=${id}`, {
-        cache: "no-cache",
+        next: {
+            tags: ["user"]
+        }
     });
 
     console.log(res);

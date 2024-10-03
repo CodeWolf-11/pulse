@@ -12,11 +12,9 @@ function chatUserCard({ user }: { user: GroupChatUserType }) {
         <Card className='m-2'>
             <CardHeader>
                 <CardTitle>{user.name}</CardTitle>
+                <p className='text-start mb-2 text-sm'>{new Date(user.created_at).toDateString()}</p>
 
             </CardHeader>
-            <CardDescription>
-                <span>{new Date(user.created_at).toDateString()}</span>
-            </CardDescription>
 
 
         </Card>
