@@ -12,3 +12,8 @@ type GroupChatUserType = {
     group_id: string
     created_at: string
 }
+
+type GroupUserPayloadType = {
+    name: string,
+    passcode: string,
+}
