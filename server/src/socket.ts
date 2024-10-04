@@ -3,6 +3,7 @@ import prisma from "./config/db.config";
 
 interface CustomSocket extends Socket {
     room?: string
+    userId?: number
 }
 
 export const socketConfig = (io: Server) => {
@@ -24,6 +25,7 @@ export const socketConfig = (io: Server) => {
 
         //joining a room
         socket.join(socket.room!);
+
 
         io.on("disconnect", (socket) => {
             console.log("A user disconnected", socket.id)
