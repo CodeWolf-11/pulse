@@ -17,3 +17,11 @@ type GroupUserPayloadType = {
     name: string,
     passcode: string,
 }
+
+type MessageType = {
+    id: string,
+    name: string,
+    message: string,
+    created_at: string,
+    group_id: string
+}

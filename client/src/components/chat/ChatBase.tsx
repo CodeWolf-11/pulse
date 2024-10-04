@@ -9,39 +9,14 @@ import ChatSideBar from './ChatSideBar';
 import ChatLogin from './ChatLogin';
 
 
-function ChatBase({ group, users }: { group: ChatGroupType, users: Array<GroupChatUserType> }) {
+function ChatBase({ messages, group, users }: { messages: Array<MessageType>, group: ChatGroupType, users: Array<GroupChatUserType> }) {
 
     const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(false);
     const [open, setOpen] = useState<boolean>(false);
     const [chatUser, setChatUser] = useState<GroupChatUserType>();
+    const [oldMessages, setOldMessages] = useState<MessageType[]>(messages);
 
-    // let socket = useMemo(() => {
-    //     const socket = getSocket();
 
-    //     //make sure that below should be done before connection
-    //     socket.auth = {
-    //         room: group.id
-    //     }
-    //     return socket.connect();
-    // }, []);
-
-    // useEffect(() => {
-
-    //     socket.on("message", (data) => {
-    //         console.log("message is ", data)
-    //     });
-
-    //     return () => {
-    //         socket.close()
-    //     }
-    // }, []);
-
-    // const handleClick = () => {
-    //     socket.emit("message", {
-    //         name: "Nishant",
-    //         id: uuid4()
-    //     });
-    // }
 
 
 
@@ -71,7 +46,7 @@ function ChatBase({ group, users }: { group: ChatGroupType, users: Array<GroupCh
                 <div className='w-full h-full flex'>
                     <ChatSideBarPhone users={users} isSideBarOpen={isSideBarOpen} />
                     <ChatSideBar users={users} />
-                    <ChatArea user={chatUser} isSideBarOpen={isSideBarOpen} setIsSideBarOpen={setIsSideBarOpen} />
+                    <ChatArea group={group} messages={oldMessages} setMessages={setOldMessages} user={chatUser} isSideBarOpen={isSideBarOpen} setIsSideBarOpen={setIsSideBarOpen} />
                 </div>
 
 
