@@ -11,6 +11,7 @@ import GroupChatMenu from './GroupChatMenu';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import { CustomUser } from '@/app/api/auth/[...nextauth]/options';
+import ENV from '@/lib/env';
 
 function GroupChatCard({ user, chatgroup }: { user: CustomUser, chatgroup: ChatGroupType }) {
     return (
@@ -21,7 +22,7 @@ function GroupChatCard({ user, chatgroup }: { user: CustomUser, chatgroup: ChatG
             </CardHeader>
             <CardContent className=''>
 
-                <Link href={"/"}>
+                <Link href={`${ENV.APP_URL}/chats/${chatgroup.id}`}>
                     <Button >Go to Room</Button>
                 </Link>
 

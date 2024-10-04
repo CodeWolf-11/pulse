@@ -4,8 +4,6 @@ import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import React from 'react'
@@ -37,7 +35,7 @@ function GroupChatMenu({ user, chatgroup }: { user: CustomUser, chatgroup: ChatG
                     </DropdownMenuItem>
 
                     <DropdownMenuItem className="flex justify-between" onClick={() => {
-                        window.navigator.clipboard.writeText(`${ENV.APP_URL}/chats/${chatgroup.id}`);
+                        window.navigator.clipboard?.writeText(`${ENV.APP_URL}/chats/${chatgroup.id}`);
                         toast.success("Link copied");
                     }}>
                         <span className="mr-2">Copy</span> <Copy />
