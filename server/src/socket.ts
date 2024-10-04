@@ -1,4 +1,5 @@
 import { Server, Socket } from "socket.io";
+import prisma from "./config/db.config";
 
 interface CustomSocket extends Socket {
     room?: string
@@ -28,8 +29,11 @@ export const socketConfig = (io: Server) => {
             console.log("A user disconnected", socket.id)
         });
 
-        socket.on("message", (data) => {
+        socket.on("message", async (data) => {
             io.to(socket.room!).emit("message", data);
+            await prisma.message.create({
+                data: data
+            });
         });
     });
 }

@@ -53,8 +53,6 @@ function Chat({ group, messages, setMessages, chatUser }: { group: ChatGroupType
         socket.emit("message", payload);
 
         setMessage("");
-        // setMessages([...messages, payload]);
-        // scrollToBottom();
 
 
     }
@@ -78,7 +76,7 @@ function Chat({ group, messages, setMessages, chatUser }: { group: ChatGroupType
                                 <div className={`flex flex-col min-w-[30%] max-w-[20rem] mt-2 rounded-lg ${chatUser.name === message.name ? "bg-blue-700 text-white self-end" : "bg-red-100 text-black"}`}>
                                     <p className='text-start p-2 text-sm'>
                                         {
-                                            message.name
+                                            message.name == chatUser.name ? "you" : message.name
                                         }
                                     </p>
 

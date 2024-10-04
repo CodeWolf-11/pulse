@@ -11,7 +11,7 @@ export async function fetchMessagesGroup(group_id: string) {
 
     const response = await res.json();
 
-    if (response?.data) {
+    if (response?.messages) {
         return response?.messages
     }
 
