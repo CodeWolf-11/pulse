@@ -29,8 +29,6 @@ class AuthController {
                 userInDb = await prisma.user.create({
                     data: body
                 });
-
-
             }
 
             let JWTPayload = {
